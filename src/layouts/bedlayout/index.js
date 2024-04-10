@@ -187,7 +187,7 @@ const BedLayout = () => {
                   margin: "0 30px",
                   color: "#fff",
                 }}
-              />bc
+              />
             </MDBox>
           </MDBox>
         </MDBox>
