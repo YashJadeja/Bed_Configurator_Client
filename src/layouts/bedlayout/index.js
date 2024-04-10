@@ -41,7 +41,7 @@ const BedLayout = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/image_layout/all_beds`);
+        const response = await axios.get(`https://bed-configurator-client-wine.vercel.app/image_layout/all_beds`);
         if (response.status === 200 && response.data.data) {
           const layoutData = response.data.data[0].layout;
 
