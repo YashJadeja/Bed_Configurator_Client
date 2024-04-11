@@ -35,7 +35,10 @@ function Basic() {
     }),
     onSubmit: async (values) => {
       try {
-        const response = await axios.post(`https://bed-configurator-client-wine.vercel.app/users/admin`, values);
+        const response = await axios.post(
+          `https://bed-configurator-client-wine.vercel.app/api/users/admin`,
+          values
+        );
         if (response.status === 200 && response.data.data === "ok") {
           if (rememberMe) {
             localStorage.setItem("bcid", values.email);

@@ -25,11 +25,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/images", imagesRouter);
-app.use("/image_layout", categoryRouter);
-app.use("/layouts", layoutRouter);
+app.use("/api/", indexRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/images", imagesRouter);
+app.use("/api/image_layout", categoryRouter);
+app.use("/api/layouts", layoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

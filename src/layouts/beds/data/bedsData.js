@@ -13,7 +13,9 @@ export default function bedsData() {
 
   const fetchLayout = async () => {
     try {
-      const response = await axios.get(`https://bed-configurator-client-wine.vercel.app/image_layout/get_layout`);
+      const response = await axios.get(
+        `https://bed-configurator-client-wine.vercel.app/api/image_layout/get_layout`
+      );
       if (response.status === 200) {
         setLayoutData(response.data.data);
       }
