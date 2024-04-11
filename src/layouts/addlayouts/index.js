@@ -54,7 +54,7 @@ function AddLayouts() {
     if (layoutId) {
       try {
         const response = await axios.get(
-          `https://bed-configurator-client-wine.vercel.app/api/layouts/layouts`
+          `https://bed-configurator-server.onrender.com/api/layouts/layouts`
         );
         if (response.status === 200) {
           setLayoutData(response.data);
@@ -67,7 +67,7 @@ function AddLayouts() {
     } else {
       try {
         const response = await axios.get(
-          `https://bed-configurator-client-wine.vercel.app/api/layouts/layouts`
+          `https://bed-configurator-server.onrender.com/api/layouts/layouts`
         );
         if (response.status === 200) {
           setLayoutData(response.data);
@@ -111,10 +111,10 @@ function AddLayouts() {
         acc[key] = selectedLayout[key][`${key}_id`];
         return acc;
       }, {});
-      const url = `https://bed-configurator-client-wine.vercel.app/api/layouts/check_layout`;
+      const url = `https://bed-configurator-server.onrender.com/api/layouts/check_layout`;
       const result = await axios.post(url, filteredLayout);
       if (result.status === 200 && result.data) {
-        const getUrl = `https://bed-configurator-client-wine.vercel.app/api/image_layout/get_layout/${result.data.data.layout_id}`;
+        const getUrl = `https://bed-configurator-server.onrender.com/api/image_layout/get_layout/${result.data.data.layout_id}`;
         const response = await axios.get(getUrl);
         if (response.status === 200 && response.data) {
           setParts(() => {
@@ -341,7 +341,7 @@ function AddLayouts() {
           acc[key] = selectedLayout[key][`${key}_id`];
           return acc;
         }, {});
-        const layoutUrl = `https://bed-configurator-client-wine.vercel.app/api/layouts/layouts`;
+        const layoutUrl = `https://bed-configurator-server.onrender.com/api/layouts/layouts`;
         const result = await axios.post(layoutUrl, filteredLayout);
         if (result.status === 200 && result.data) {
           object.layout_id = result.data.data.layout_id;
@@ -361,20 +361,20 @@ function AddLayouts() {
             const name = item.image_data.name + uniqueId;
 
             const response = await axios.post(
-              `https://bed-configurator-client-wine.vercel.app/api/images/insert/${name}`,
+              `https://bed-configurator-server.onrender.com/api/images/insert/${name}`,
               fileData
             );
             if (response.status === 200) {
               item.image_data["url"] = response.data.url;
             }
           }
-          const imageurl = `https://bed-configurator-client-wine.vercel.app/api/images/images`;
+          const imageurl = `https://bed-configurator-server.onrender.com/api/images/images`;
           const response = await axios.post(imageurl, filteredImageLayouts);
           if (response.status === 200 && response.data) {
             const imageIds = response.data.data.map((item) => item.image_id);
             object.image_ids.push(...imageIds);
 
-            const imageLayouturl = `https://bed-configurator-client-wine.vercel.app/api/image_layout/image_layout`;
+            const imageLayouturl = `https://bed-configurator-server.onrender.com/api/image_layout/image_layout`;
             const finalResponse = await axios.post(imageLayouturl, object);
             if (finalResponse.status === 200 && finalResponse.data) {
               // alert("Image Added Successfully");
