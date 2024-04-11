@@ -36,7 +36,7 @@ function Basic() {
     onSubmit: async (values) => {
       try {
         const response = await axios.post(
-          `https://bed-configurator-client-wine.vercel.app/api/users/admin`,
+          `https://bed-configurator-server.onrender.com/api/users/admin`,
           values
         );
         if (response.status === 200 && response.data.data === "ok") {

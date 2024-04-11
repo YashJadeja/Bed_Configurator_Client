@@ -24,7 +24,7 @@ export default function data(collection, handleEdit) {
   const fetchLayout = async () => {
     try {
       const response = await axios.get(
-        `https://bed-configurator-client-wine.vercel.app/api/layouts/${collection}`
+        `https://bed-configurator-server.onrender.com/api/layouts/${collection}`
       );
       if (response.status === 200) {
         setLayoutData(response.data.data);
@@ -42,7 +42,7 @@ export default function data(collection, handleEdit) {
 
   const handleDelete = async (layout, collection) => {
     try {
-      const url = `https://bed-configurator-client-wine.vercel.app/api/layouts/${collection}/${
+      const url = `https://bed-configurator-server.onrender.com/api/layouts/${collection}/${
         layout[`${collection}_id`]
       }`;
       const response = await axios.delete(url);

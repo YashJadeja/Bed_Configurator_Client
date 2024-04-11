@@ -7,8 +7,6 @@ import MDBox from "components/MDBox";
 import Sidenav from "examples/Sidenav";
 import theme from "assets/theme";
 import themeDark from "assets/theme-dark";
-import rtlPlugin from "stylis-plugin-rtl";
-import createCache from "@emotion/cache";
 import routes from "routes";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 import brandWhite from "assets/images/logo-ct.png";
