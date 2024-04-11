@@ -5,6 +5,11 @@ import BedLayout from "layouts/bedlayout";
 import AddLayouts from "layouts/addlayouts";
 import Icon from "@mui/material/Icon";
 import Beds from "layouts/beds";
+import sizeIcon from "./assets/images/icons/UserMenu/size.svg";
+import colorIcon from "./assets/images/icons/UserMenu/colour.svg";
+import headboardIcon from "./assets/images/icons/UserMenu/headboard.svg";
+import depthIcon from "./assets/images/icons/UserMenu/depth.svg";
+import storageIcon from "./assets/images/icons/UserMenu/storage.svg";
 
 const routes = [
   {
@@ -19,7 +24,7 @@ const routes = [
     type: "collapse",
     name: "Sizes",
     key: "sizes",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <img src={sizeIcon} width={20} />,
     route: "/sizes",
     component: <Tables collection={"size"} />,
   },
@@ -27,7 +32,7 @@ const routes = [
     type: "collapse",
     name: "Colors",
     key: "colors",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <img src={colorIcon} width={20} />,
     route: "/colors",
     component: <Tables collection={"color"} />,
   },
@@ -35,7 +40,7 @@ const routes = [
     type: "collapse",
     name: "Headboards",
     key: "headboards",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <img src={headboardIcon} width={20} />,
     route: "/headboards",
     component: <Tables collection={"headboard"} />,
   },
@@ -43,7 +48,7 @@ const routes = [
     type: "collapse",
     name: "Basedepths",
     key: "basedepths",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <img src={depthIcon} width={20} />,
     route: "/basedepths",
     component: <Tables collection={"basedepth"} />,
   },
@@ -51,7 +56,7 @@ const routes = [
     type: "collapse",
     name: "Storages",
     key: "storages",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    icon: <img src={storageIcon} width={20} />,
     route: "/storages",
     component: <Tables collection={"storage"} />,
   },

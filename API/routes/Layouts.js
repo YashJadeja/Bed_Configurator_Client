@@ -22,30 +22,26 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post(
-  "/:layout/:name",
-  upload.single("files"),
-  async function (req, res) {
-    try {
-      const { layout, name } = req.params;
+router.post("/:layout/:name", upload.single("files"), async function (req, res) {
+  try {
+    const { layout, name } = req.params;
 
-      const timestamp = Date.now();
-      const uniqueId = `${timestamp}`;
+    const timestamp = Date.now();
+    const uniqueId = `${timestamp}`;
 
-      let data = {
-        [`${layout}_id`]: uniqueId,
-        [`${layout}_name`]: name,
-        [`${layout}_image`]: "uploads/" + req.file.filename,
-      };
+    let data = {
+      [`${layout}_id`]: uniqueId,
+      [`${layout}_name`]: name,
+      [`${layout}_image`]: "uploads/" + req.file.filename,
+    };
 
-      const collection = layout.charAt(0).toUpperCase() + layout.slice(1);
-      await eval(collection).create(data);
-      res.status(200).json({ message: `${collection} added` });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
+    const collection = layout.charAt(0).toUpperCase() + layout.slice(1);
+    await eval(collection).create(data);
+    res.status(200).json({ message: `${collection} added` });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-);
+});
 
 router.put("/:layout/:name/:id", async function (req, res) {
   try {
@@ -97,6 +93,26 @@ router.get("/layouts", async function (req, res) {
       storage: storage,
       headboard: headboards,
       basedepth: basedepth,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
+router.get("/counts", async function (req, res) {
+  try {
+    const sizes = await Size.find();
+    const colors = await Color.find();
+    const storage = await Storage.find();
+    const headboards = await Headboard.find();
+    const basedepth = await Basedepth.find();
+
+    res.status(200).json({
+      size: sizes.length,
+      color: colors.length,
+      storage: storage.length,
+      headboard: headboards.length,
+      basedepth: basedepth.length,
     });
   } catch (error) {
     res.status(500).json({ message: error });

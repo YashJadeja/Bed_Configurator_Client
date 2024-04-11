@@ -4,33 +4,23 @@ import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
 import Icon from "@mui/material/Icon";
 import MDBox from "components/MDBox";
-import MDInput from "components/MDInput";
 import Breadcrumbs from "examples/Breadcrumbs";
-import NotificationItem from "examples/Items/NotificationItem";
 import {
   navbar,
   navbarContainer,
   navbarRow,
   navbarMobileMenu,
 } from "examples/Navbars/DashboardNavbar/styles";
-import {
-  useMaterialUIController,
-  setTransparentNavbar,
-  setMiniSidenav,
-  setOpenConfigurator,
-} from "context";
+import { useMaterialUIController, setTransparentNavbar, setMiniSidenav } from "context";
 import MDButton from "components/MDButton";
 import { useNavigate } from "react-router-dom";
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
   const [controller, dispatch] = useMaterialUIController();
-  const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator, darkMode, sidenavColor } =
-    controller;
-  const [openMenu, setOpenMenu] = useState(false);
+  const { miniSidenav, transparentNavbar, fixedNavbar, darkMode, sidenavColor } = controller;
   const route = useLocation().pathname.split("/").slice(1);
   const navigate = useNavigate();
 
