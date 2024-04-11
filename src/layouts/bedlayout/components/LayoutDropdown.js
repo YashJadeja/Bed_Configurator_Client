@@ -53,7 +53,7 @@ const LayoutDropdown = ({ layout, setLayouts, selectedId, layouts }) => {
         }, {});
 
         const response = await axios.post(
-          `https://bed-configurator-client-wine.vercel.app/layouts/${layout.toLowerCase()}`,
+          `https://bed-configurator-client-wine.vercel.app/api/layouts/${layout.toLowerCase()}`,
           filteredLayout
         );
         if (response.status === 200 && response.data) {

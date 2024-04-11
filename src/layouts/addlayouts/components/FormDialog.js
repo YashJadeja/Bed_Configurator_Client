@@ -55,7 +55,7 @@ const FormDialog = ({ isOpen, toggle, uniqueKey, fetchLayout, data }) => {
       if (!data || !data.image) {
         const imageData = new FormData();
         imageData.append("files", image);
-        const url = `https://bed-configurator-client-wine.vercel.app/layouts/${uniqueKey}/${name}`;
+        const url = `https://bed-configurator-client-wine.vercel.app/api/layouts/${uniqueKey}/${name}`;
         const response = await axios.post(url, imageData);
         if (response.status === 200) {
           formFormik.resetForm();
@@ -73,7 +73,7 @@ const FormDialog = ({ isOpen, toggle, uniqueKey, fetchLayout, data }) => {
           const name = image.name + uniqueId;
 
           const response = await axios.post(
-            `https://bed-configurator-client-wine.vercel.app/images/insert/${name}`,
+            `https://bed-configurator-client-wine.vercel.app/api/images/insert/${name}`,
             fileData
           );
           if (response.status === 200 && response.data) {
@@ -82,7 +82,7 @@ const FormDialog = ({ isOpen, toggle, uniqueKey, fetchLayout, data }) => {
         } else {
           imageUrl = image.name;
         }
-        const url = `https://bed-configurator-client-wine.vercel.app/layouts/${uniqueKey}/${name}/${data.id}`;
+        const url = `https://bed-configurator-client-wine.vercel.app/api/layouts/${uniqueKey}/${name}/${data.id}`;
         const response = await axios.put(url, { url: imageUrl });
         if (response.status === 200) {
           formFormik.resetForm();
