@@ -8,7 +8,7 @@ const axios = require("axios");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    let destinationFolder = "../../bed_configurator/src/uploads/";
+    let destinationFolder = "../../Bed_Configurator_Client/src/uploads/";
     cb(null, destinationFolder);
   },
   filename: function (req, file, cb) {
@@ -24,10 +24,10 @@ router.post("/insert/:name", upload.single("file"), async (req, res) => {
   }
 
   const imageName = req.params.name;
-  const filePath = `../../bed_configurator/src/uploads/${req.file.filename}`;
+  const filePath = `../../Bed_Configurator_Client/src/uploads/${req.file.filename}`;
 
   const fileExtension = path.extname(req.file.filename);
-  const newPath = `../../bed_configurator/src/uploads/` + imageName + fileExtension;
+  const newPath = `../../Bed_Configurator_Client/src/uploads/` + imageName + fileExtension;
 
   fs.rename(filePath, newPath, (err) => {
     if (err) {

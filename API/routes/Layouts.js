@@ -12,7 +12,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    let destinationFolder = "../../bed_configurator/src/uploads/";
+    let destinationFolder = "../../Bed_Configurator_Client/src/uploads/";
     cb(null, destinationFolder);
   },
   filename: function (req, file, cb) {
